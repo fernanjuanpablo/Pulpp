@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pulpp — Organic Power Smoothies Cebu</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --crimson: #C41E4A;
+      --deep-crimson: #9B1538;
+      --blush: #F2D4DC;
+      --cream: #FAF5EE;
+      --green: #2E5834;
+      --lime: #7CBF5A;
+      --charcoal: #1A1A1A;
+      --muted: #7A6E6E;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.4rem;
+      background: rgba(250,245,238,0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(196,30,74,0.12);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--crimson);
+      letter-spacing: -0.03em;
+    }
+    .nav-logo span { font-style: italic; color: var(--green); }
+    .nav-cta {
+      background: var(--crimson);
+      color: #fff;
+      border: none;
+      padding: 0.55rem 1.5rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+    .nav-cta:hover { background: var(--deep-crimson); transform: translateY(-1px); color: #fff; text-decoration: none; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .circle-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(196,30,74,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px;
+      animation: floatA 8s ease-in-out infinite;
+    }
+    .circle-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(124,191,90,0.15) 0%, transparent 70%);
+      bottom: 50px; left: -80px;
+      animation: floatB 10s ease-in-out infinite;
+    }
+    @keyframes floatA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
+    @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(16px)} }
+
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--charcoal);
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--crimson);
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      font-weight: 300;
+      margin-top: 1.2rem;
+      max-width: 420px;
+      line-height: 1.7;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary-pulpp {
+      background: var(--crimson);
+      color: #fff;
+      border: none;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary-pulpp:hover {
+      background: var(--deep-crimson);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196,30,74,0.3);
+      color: #fff; text-decoration: none;
+    }
+    .btn-outline-pulpp {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid rgba(26,26,26,0.25);
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      display: inline-block;
+    }
+    .btn-outline-pulpp:hover { border-color: var(--crimson); color: var(--crimson); text-decoration: none; }
+
+    /* hero image side */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeUp 0.9s 0.2s ease both;
+    }
+    .hero-blob {
+      width: 340px; height: 340px;
+      background: var(--crimson);
+      border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: morph 10s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(196,30,74,0.35);
+    }
+    @keyframes morph {
+      0%,100% { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; }
+      33%      { border-radius: 45% 55% 40% 60% / 60% 40% 55% 45%; }
+      66%      { border-radius: 55% 45% 60% 40% / 40% 55% 50% 60%; }
+    }
+    .hero-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 3rem;
+      color: #fff;
+      letter-spacing: -0.04em;
+      font-style: italic;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: 20px; right: 10px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      animation: floatA 6s ease-in-out infinite;
+    }
+    .hero-badge-2 {
+      position: absolute;
+      top: 30px; left: 0;
+      background: var(--blush);
+      color: var(--crimson);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      white-space: nowrap;
+      animation: floatB 7s ease-in-out infinite;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-strip {
+      background: var(--crimson);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-inner span {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: #fff;
+      margin: 0 2.5rem;
+      letter-spacing: 0.04em;
+    }
+    .marquee-inner span::before { content: '✦'; margin-right: 2.5rem; }
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 6rem 0;
+      background: #fff;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.15;
+      color: var(--charcoal);
+    }
+    .section-title em { font-style: italic; color: var(--crimson); }
+    .about-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 300;
+      max-width: 480px;
+    }
+    .about-stat-card {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .about-stat-card:hover { transform: translateY(-4px); }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--crimson);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 400;
+      margin-top: 0.3rem;
+    }
+
+    /* ── PILLARS ── */
+    #pillars {
+      padding: 6rem 0;
+      background: var(--green);
+    }
+    .pillar-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .pillar-card:hover { background: rgba(255,255,255,0.13); transform: translateY(-4px); }
+    .pillar-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    .pillar-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+    .pillar-desc {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+    #pillars .section-title { color: #fff; }
+    #pillars .section-label { color: var(--lime); }
+    #pillars .section-title em { color: var(--lime); }
+
+    /* ── ORDER CTA ── */
+    #order {
+      padding: 7rem 0;
+      background: var(--cream);
+      text-align: center;
+    }
+    .order-card {
+      background: var(--crimson);
+      border-radius: 32px;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .order-card::before {
+      content: '';
+      position: absolute;
+      width: 350px; height: 350px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      top: -80px; right: -80px;
+    }
+    .order-card::after {
+      content: '';
+      position: absolute;
+      width: 250px; height: 250px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 50%;
+      bottom: -60px; left: -40px;
+    }
+    .order-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      position: relative; z-index: 2;
+    }
+    .order-title em { font-style: italic; }
+    .order-sub {
+      color: rgba(255,255,255,0.8);
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 1rem 0 2rem;
+      position: relative; z-index: 2;
+    }
+    .btn-order {
+      background: #fff;
+      color: var(--crimson);
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative; z-index: 2;
+    }
+    .btn-order:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+      color: var(--crimson); text-decoration: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 2.5rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.8rem;
+      font-style: italic;
+      color: var(--crimson);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    .footer-tag {
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+    .footer-links {
+      margin-top: 1.2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--crimson); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .hero-blob { width: 250px; height: 250px; }
+      .hero-logo-text { font-size: 2.2rem; }
+      nav { padding: 1rem 1.2rem; }
+      .order-card { padding: 3rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">p<span>ulpp</span></div>
+    <a href="https://www.instagram.com/pulppcebu" target="_blank" class="nav-cta">Order Now →</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-circle circle-1"></div>
+    <div class="hero-bg-circle circle-2"></div>
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 hero-content mb-5 mb-lg-0">
+          <div class="hero-tag">Cebu's Organic Power Smoothies</div>
+          <h1 class="hero-headline">
+            Fuel Your Body,<br><em>Feed Your Power.</em>
+          </h1>
+          <p class="hero-sub">
+            Clean, organic, premium smoothies crafted to give your body exactly what it craves. No fillers. No compromises. Just pure plant power.
+          </p>
+          <div class="hero-actions">
+            <a href="https://www.instagram.com/pulppcebu" target="_blank" class="btn-primary-pulpp">
+              Order on Instagram ↗
+            </a>
+            <a href="#about" class="btn-outline-pulpp">Our Story</a>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-visual">
+          <div class="hero-blob">
+            <span class="hero-logo-text">pulpp</span>
+          </div>
+          <div class="hero-badge">🌿 100% Organic</div>
+          <div class="hero-badge-2">✦ Clean Ingredients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span>Organic</span><span>Premium</span><span>Clean</span><span>Power Smoothies</span>
+      <span>Cebu City</span><span>Fuel Your Body</span><span>Feed Your Power</span><span>No Fillers</span>
+      <span>Organic</span><span>Premium</span><span>Clean</span><span>Power Smoothies</span>
+      <span>Cebu City</span><span>Fuel Your Body</span><span>Feed Your Power</span><span>No Fillers</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0 fade-up">
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">Not just a smoothie.<br>A <em>lifestyle</em> choice.</h2>
+          <p class="about-desc mt-3">
+            Pulpp was born from a simple belief — that what you put in your body matters. We source clean, organic ingredients and blend them into fuel for your daily hustle. Based in Cebu City, we're here for the movers, the grinders, and the health-conscious dreamers.
+          </p>
+          <p class="about-desc mt-3">
+            Every cup is crafted with intention. No artificial anything. Just honest, powerful nutrition.
+          </p>
+        </div>
+        <div class="col-lg-6 fade-up">
+          <div class="row">
+            <div class="col-6 mb-4">
+              <div class="about-stat-card">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Organic Ingredients</div>
+              </div>
+            </div>
+            <div class="col-6 mb-4">
+              <div class="about-stat-card">
+                <div class="stat-num">0</div>
+                <div class="stat-label">Artificial Additives</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="about-stat-card">
+                <div class="stat-num">🌿</div>
+                <div class="stat-label">Plant-Powered Blends</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="about-stat-card">
+                <div class="stat-num">📍</div>
+                <div class="stat-label">Guadalupe, Cebu City</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section id="pillars">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <p class="section-label">The Pulpp Promise</p>
+        <h2 class="section-title">Everything we stand <em>for</em></h2>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4 fade-up">
+          <div class="pillar-card">
+            <div class="pillar-icon">🌱</div>
+            <div class="pillar-title">Clean</div>
+            <p class="pillar-desc">No preservatives, no artificial sweeteners, no shortcuts. Just real food in every single cup.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 fade-up">
+          <div class="pillar-card">
+            <div class="pillar-icon">🌿</div>
+            <div class="pillar-title">Organic</div>
+            <p class="pillar-desc">Sourced from nature, grown without harmful chemicals. Pure ingredients for a pure you.</p>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4 fade-up">
+          <div class="pillar-card">
+            <div class="pillar-icon">⚡</div>
+            <div class="pillar-title">Premium</div>
+            <p class="pillar-desc">Quality you can taste. We never compromise on the ingredients that go into your body.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER CTA -->
+  <section id="order">
+    <div class="container fade-up">
+      <div class="order-card">
+        <h2 class="order-title">Ready to power<br><em>your day?</em></h2>
+        <p class="order-sub">DM us on Instagram to place your order. Fresh blends, made for you.</p>
+        <a href="https://www.instagram.com/pulppcebu" target="_blank" class="btn-order">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          Order via @pulppcebu
+        </a>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.78rem;margin-top:1.2rem;position:relative;z-index:2;">
+          📍 South Alaura St., Kabajar, Guadalupe, Cebu City
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">pulpp</span>
+    <p class="footer-tag">Organic Power Smoothies · Cebu</p>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/pulppcebu" target="_blank">Instagram</a>
+      <a href="#about">About</a>
+      <a href="#order">Order</a>
+    </div>
+    <p style="color:rgba(255,255,255,0.2);font-size:0.72rem;margin-top:1.5rem;">© 2026 Pulpp. Fuel your body, feed your power.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Smooth scroll for anchor links
+    $('a[href^="#"]').on('click', function(e) {
+      const target = $(this.getAttribute('href'));
+      if (target.length) {
+        e.preventDefault();
+        $('html,body').animate({ scrollTop: target.offset().top - 70 }, 550);
+      }
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
