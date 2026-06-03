@@ -66,10 +66,10 @@
 
     /* ── HERO ── */
     #hero {
-      min-height: 100vh;
       display: flex;
       align-items: center;
-      padding-top: 80px;
+      padding-top: 160px;
+      padding-bottom: 80px;
       position: relative;
       overflow: hidden;
       background: var(--cream);
@@ -451,6 +451,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
+      #hero { padding-top: 160px; }
       .hero-blob { width: 250px; height: 250px; }
       .hero-logo-text { font-size: 2.2rem; }
       nav { padding: 1rem 1.2rem; }
@@ -462,7 +463,9 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">p<span>ulpp</span></div>
+    <div class="nav-logo-img">
+      <img src="assets/logo.png" alt="pulpp" class="img-fluid" width="125">
+    </div>
     <a href="https://www.instagram.com/pulppcebu" target="_blank" class="nav-cta">Order Now →</a>
   </nav>
 
@@ -497,16 +500,6 @@
       </div>
     </div>
   </section>
-
-  <!-- MARQUEE -->
-  <div class="marquee-strip">
-    <div class="marquee-inner">
-      <span>Organic</span><span>Premium</span><span>Clean</span><span>Power Smoothies</span>
-      <span>Cebu City</span><span>Fuel Your Body</span><span>Feed Your Power</span><span>No Fillers</span>
-      <span>Organic</span><span>Premium</span><span>Clean</span><span>Power Smoothies</span>
-      <span>Cebu City</span><span>Fuel Your Body</span><span>Feed Your Power</span><span>No Fillers</span>
-    </div>
-  </div>
 
   <!-- ABOUT -->
   <section id="about">
